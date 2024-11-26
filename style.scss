@@ -15,14 +15,15 @@ html {
 body {
   height: 100%;
   font-family: "Jost", Arial, sans-serif;
+  background: #e0e0e0;
 }
 
 $nav-colour: #473f83;
 
 .hamburger {
-  position: absolute;
-  top: 100px;
-  right: 100px;
+  position: fixed;
+  top: 40px;
+  right: 40px;
   width: 30px;
   cursor: pointer;
   display: none;
@@ -35,7 +36,8 @@ $nav-colour: #473f83;
     display: block;
     height: 5px;
     width: 100%;
-    background: red;
+    background: $nav-colour;
+    box-shadow: 3px 3px 0 0 turquoise;
 
     &:nth-of-type(2) {
       margin: 5px 0;
@@ -44,7 +46,7 @@ $nav-colour: #473f83;
 }
 
 #nav {
-  position: relative;
+  position: fixed;
   display: block;
   width: 100%;
   background: $nav-colour;
@@ -52,15 +54,33 @@ $nav-colour: #473f83;
   transition: 0.3s linear;
 
   @media only screen and (max-width: 990px) {
-    width: 500px;
-    max-width: 70%;
+    width: 70%;
+    max-width: 500px;
     left: -100vw;
+    height: 100vh;
+  }
+
+  @media only screen and (max-width: 600px) {
+    max-width: unset;
+    width: 100vw;
   }
 
   .close-btn {
-    float: right;
-    margin: 10px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 1;
     cursor: pointer;
+    transition: 0.1s ease-in;
+    display: block;
+
+    @media only screen and (min-width: 991px) {
+      display: none;
+    }
+
+    &:hover {
+      transform: rotate(360deg);
+    }
   }
 
   //1st level nav
@@ -169,4 +189,25 @@ $nav-colour: #473f83;
 
 .nav-reveal {
   left: 0 !important;
+}
+
+.content-wrapper {
+  width: 95%;
+  max-width: 990px;
+  margin: 0 auto;
+  padding: 50px 1em 1em 1em;
+
+  @media only screen and (max-width: 990px) {
+    text-align: center;
+  }
+
+  h2 {
+    margin: 0 0 30px 0;
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+    margin: 0 0 20px;
+  }
 }
